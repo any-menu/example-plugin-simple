@@ -5,7 +5,14 @@
  * Implements PluginInterface with TypeScript class syntax.
  */
 
-import './style.css';
+// 插件自定义样式
+// 
+// 另一个做法不太推荐，但也说一下。
+// 使用库: import cssInjectedByJs from 'vite-plugin-css-injected-by-js';
+// 使用: 放到 defineConfig plugins 中
+// 功能: 可以将 CSS 内联到 JS 中，插件只需分发单个 .js 文件
+import cssText from './style.css?inline';
+
 import type { PluginInterface, PluginInterfaceCtx } from '../types/any-menu';
 
 export default class HelloWorldPlugin implements PluginInterface {
@@ -17,6 +24,7 @@ export default class HelloWorldPlugin implements PluginInterface {
     author: 'your-name',
     description: 'A minimal AnyMenu plugin template that prints Hello World.',
     icon: 'lucide-hand-wave',
+    css: cssText,
   };
 
   onLoad(): void {

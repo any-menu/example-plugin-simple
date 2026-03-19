@@ -1,9 +1,11 @@
 {
-  "name": "anymenu-plugin-simple",
+  "name": "any-menu-plugin-simple",
   "version": "1.0.0",
   "description": "AnyMenu simple plugin example",
   "keywords": [
-    "anymenu"
+    "any-menu",
+    "anymenu",
+    "plugin"
   ],
   "license": "MIT",
   "author": "",

@@ -26,6 +26,10 @@ export interface PluginMetadata {
    * - 不填则用名字自动生成
    */
   icon?: string;
+  /** CSS 字符串，插件加载时自动注入到 <head>，卸载时自动移除
+   * 若使用 TypeScript 模板仓库开发，build 工具会自动将 .css 文件内容填入此字段
+   */
+  css?: string;
 }
 
 export interface PluginInterfaceCtx {

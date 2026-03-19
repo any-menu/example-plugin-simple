@@ -23,7 +23,7 @@ export default class HelloWorldPlugin implements PluginInterface {
     min_app_version: '1.1.0',
     author: 'your-name',
     description: 'A minimal AnyMenu plugin template that prints Hello World.',
-    icon: 'lucide-hand-wave',
+    icon: 'lucide-printer',
     css: cssText,
   };
 

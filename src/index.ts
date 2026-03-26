@@ -15,10 +15,10 @@ import cssText from './style.css?inline';
 
 import type { PluginInterface, PluginInterfaceCtx } from '../types/any-menu';
 
-export default class HelloWorldPlugin implements PluginInterface {
+export default class ExamplePluginSimple implements PluginInterface {
   metadata = {
-    id: 'hello-world',
-    name: 'Hello World',
+    id: 'example-plugin-simple',
+    name: 'Example Plugin Simple',
     version: '1.0.0',
     min_app_version: '1.1.0',
     author: 'your-name',
@@ -28,11 +28,11 @@ export default class HelloWorldPlugin implements PluginInterface {
   };
 
   onLoad(): void {
-    console.log('[HelloWorld] Plugin loaded');
+    console.log('[ExamplePluginSimple] Plugin loaded');
   }
 
   onUnload(): void {
-    console.log('[HelloWorld] Plugin unloaded');
+    console.log('[ExamplePluginSimple] Plugin unloaded');
   }
 
   async run(ctx: PluginInterfaceCtx): Promise<void> {

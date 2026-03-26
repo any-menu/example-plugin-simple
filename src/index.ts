@@ -42,11 +42,11 @@ export default class ExamplePluginSimple implements PluginInterface {
     // 注册面板示例
     if (!cache_ctx) {
       cache_ctx = ctx
-        const newPanel = document.createElement('div'); newPanel.innerText = 'New Panel Content';
-        ctx.api.registerSubPanel({
-            id: 'example-plugin-simple-panel',
-            el: newPanel
-        })
+      const newPanel = document.createElement('div'); newPanel.innerText = 'New Panel Content';
+      ctx.api.registerSubPanel({
+          id: 'example-plugin-simple-panel',
+          el: newPanel
+      })
     }
 
     // 文本输出示例

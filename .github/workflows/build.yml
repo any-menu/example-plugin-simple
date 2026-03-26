@@ -56,6 +56,6 @@ jobs:
           artifacts: |
             ./dist/main.js
           generateReleaseNotes: false # 自动根据 commits 生成 release notes。此外，这里应该导向一个更新日志页
-          prerelease: true # 是否预发布 (可以在release上修改该项，我就不判断tag是否beta结尾了)
-          makeLatest: false  # 是否最后一个版本 (可以在release上修改该项，我就不判断tag是否beta结尾了)
+          prerelease: ${{ endsWith(github.ref_name, 'beta') }} # 是否预发布
+          makeLatest: ${{ !endsWith(github.ref_name, 'beta') }} # 是否最后一个版本
           allowUpdates: true # 如果 tag 已存在，允许更新

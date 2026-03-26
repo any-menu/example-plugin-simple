@@ -56,12 +56,16 @@ export interface PluginInterfaceCtx {
     urlRequest: (conf: UrlRequestConfig) => Promise<UrlResponse | null>;
     /** 隐藏面板（低风险） */
     hidePanel: (list?: string[]) => void;
+    /** 读取文件（高风险） */
+    readFile: (basePath: 'CONFIG'|'PUBLIC', relPath: string) => Promise<string | null>;
+    /** 写入文件（高风险） */
+    writeFile: (basePath: 'CONFIG'|'PUBLIC', relPath: string, content: string) => Promise<boolean>;
     /** 显示面板（低风险） */
     showPanel: (list?: string[]) => void;
     /** 注册子面板（中风险） */
-    registerSubPanel?: (options: { id: string; el: HTMLElement }) => void;
+    registerSubPanel: (options: { id: string; el: HTMLElement }) => void;
     /** 注销子面板 */
-    unregisterSubPanel?: (id: string) => void;
+    unregisterSubPanel: (id: string) => void;
   };
 }
 

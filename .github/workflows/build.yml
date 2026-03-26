@@ -20,6 +20,7 @@ jobs:
         node-version: '22'
     - name: build
       run: |
+        npm install
         npm run build
     - name: upload build artifact
       if: always()

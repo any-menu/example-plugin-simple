@@ -15,6 +15,8 @@ import cssText from './style.css?inline';
 
 import type { PluginInterface, PluginInterfaceCtx } from '../types/any-menu';
 
+let cache_ctx: PluginInterfaceCtx | undefined
+
 export default class ExamplePluginSimple implements PluginInterface {
   metadata = {
     id: 'example-plugin-simple',
@@ -32,12 +34,23 @@ export default class ExamplePluginSimple implements PluginInterface {
   }
 
   onUnload(): void {
+    if (cache_ctx) cache_ctx.api.unregisterSubPanel('example-plugin-simple-panel')
     console.log('[ExamplePluginSimple] Plugin unloaded');
   }
 
   async run(ctx: PluginInterfaceCtx): Promise<void> {
-    const selected = ctx.env.selectedText;
+    // 注册面板示例
+    if (!cache_ctx) {
+      cache_ctx = ctx
+        const newPanel = document.createElement('div'); newPanel.innerText = 'New Panel Content';
+        ctx.api.registerSubPanel({
+            id: 'example-plugin-simple-panel',
+            el: newPanel
+        })
+    }
 
+    // 文本输出示例
+    const selected = ctx.env.selectedText;
     if (selected) {
       // 如果有选中文本，在其后追加问候
       ctx.api.sendText(`${selected} — Hello World!`);

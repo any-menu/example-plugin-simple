@@ -51,7 +51,7 @@ export default class ExamplePluginSimple implements PluginInterface {
 
     // 文本输出示例
     const selected = ctx.env.selectedText;
-    if (selected) {
+    if (selected && selected.trim() !== '') {
       // 如果有选中文本，在其后追加问候
       ctx.api.sendText(`${selected} — Hello World!`);
     } else {

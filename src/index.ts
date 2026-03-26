@@ -56,7 +56,11 @@ export default class ExamplePluginSimple implements PluginInterface {
       ctx.api.sendText(`${selected} — Hello World!`);
     } else {
       // 否则直接输出
-      ctx.api.sendText('Hello World!');
+      // ctx.api.sendText('Hello World!');
+
+      // 否则显示面板
+      ctx.api.hidePanel(['menu'])
+      ctx.api.showPanel(['example-plugin-simple-panel'])
     }
 
     ctx.api.notify('Hello World plugin executed ✅');

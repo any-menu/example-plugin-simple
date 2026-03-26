@@ -10,6 +10,7 @@ on:
 
 jobs: 
   build:
+    name: Build Plugin
     runs-on: ubuntu-latest
     steps:
     - name: checkout repo
@@ -50,7 +51,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         uses: ncipollo/release-action@v1
         with:
-          token: ${{ secrets.AnyBlockPro_Repo }}
+          token: ${{ secrets.Your_token_secrets_name }} # GitHub Token，不填报错: `Error: Error undefined: Parameter token or opts.auth is required`
           name: 'Release ${{ github.ref_name }}'
           body: 'Release for tag ${{ github.ref_name }}'
           artifacts: |

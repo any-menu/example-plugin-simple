@@ -53,16 +53,16 @@ export default class ExamplePluginSimple implements PluginInterface {
     const selected = ctx.env.selectedText;
     if (selected && selected.trim() !== '') {
       // 如果有选中文本，在其后追加问候
-      ctx.api.sendText(`${selected} — Hello World!`);
+      ctx.api.sendText(`${selected} — ExamplePluginSimply!`);
     } else {
       // 否则直接输出
-      // ctx.api.sendText('Hello World!');
+      // ctx.api.sendText('ExamplePluginSimply!');
 
       // 否则显示面板
       ctx.api.hidePanel(['menu'])
       ctx.api.showPanel(['example-plugin-simple-panel'])
     }
 
-    ctx.api.notify('Hello World plugin executed ✅');
+    ctx.api.notify('ExamplePluginSimply plugin executed ✅');
   }
 }

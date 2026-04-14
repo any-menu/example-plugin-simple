@@ -20,7 +20,15 @@ $ npm run build
 
 ## 从零生成此项目 (可选)
 
-可选阅读，仅推荐有需要自定义插件模板的查看 (如需要开发有 Vue/React 等依赖的插件模板)
+> [!note]
+> 可选阅读
+> 
+> 如果你使用 js 来编写则不需要这些，直接仿照官方的 js 示例插件来编写就可以了
+> 
+> 若使用模板，一般来说你只要根据模板创建你的项目即可 (即在 github repo 页面直接按右上角的根据模板创建)，
+> 也不需要阅读此章
+> 
+> 仅推荐想要了解模板细节、有需要自定义插件模板的开发者查看此节 (如需要开发其他框架依赖的插件模板)
 
 (1) git 环境 (可选)
 
@@ -82,6 +90,10 @@ Is this OK? (yes)
 
 $ npm install -D typescript vite
 
+# 为 any-menu 插件提供类型，对应 any-menu/any-menu 项目的 src/Type/
+# 当然，
+$ npm install -D any-menu
+
 # 替换 package.json 的 scripts (使用 vite 和 typescript)
 # 添加 tsconfig.json
 # 添加 vite.config.js
@@ -91,14 +103,6 @@ $ npm install -D typescript vite
 
 ```bash
 # 然后是文件准备
-
-# (1) typescript 类型
-# 复制 any-menu/any-menu 项目的 src/Core/PluginInterface.ts 接口到 /types/any-menu.d.ts
-# 或复制该项目的 /types/any-menu.d.ts
-# 或等待后期这一步会转而使用 npm 类型依赖包来实现
-# 
-# 当然，如果你使用 js 来编写则不需要这一步，直接仿照官方的 js 示例插件来编写就可以了
-
-# (2) 创建和编写 src/ 文件夹内的内容 (主要程序代码和样式文件)
+# 创建和编写 `src/` 文件夹内的内容 (主要程序代码和样式文件)
 # 特殊：这里使用的特殊的方式将 css 文件转为字符串附加到 js 上，这样能方便你更好地利用代码着色功能编辑 js 文件
 ```

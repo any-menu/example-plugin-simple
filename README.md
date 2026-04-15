@@ -12,13 +12,21 @@ $ npm run build
 
 ## 使用
 
+### 模板使用
+
+在 Github 仓库中，右上角选择 `Use this template > Create a new repository`，即可使用模板创建你的仓库
+
+不推荐直接 clone 或 fork，这将会保留模板中的历史记录
+
+### 插件使用
+
 同普通的 AnyMenu 插件
 
 将编译好的结果放置于 AnyMenu 的插件目录下，然后 AnyMenu 中刷新本地插件列表即可看到刚刚添加的新插件
 
 将新插件开启后即可 (当前版本可能需要重启下插件/软件才可)
 
-## 工作流使用
+### 工作流使用
 
 内置了 Github 工作流，帮你简化操作
 

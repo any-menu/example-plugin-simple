@@ -13,39 +13,40 @@
 // 功能: 可以将 CSS 内联到 JS 中，插件只需分发单个 .js 文件
 import cssText from './style.css?inline';
 
-import type { PluginInterface, PluginInterfaceCtx } from 'any-menu';
+import type { PluginInterface, PluginRunCtx, PluginAppCtx } from 'any-menu';
 
-let cache_ctx: PluginInterfaceCtx | undefined
+let app: PluginAppCtx
+let cache_el: HTMLElement|undefined
 
 export default class ExamplePluginSimple implements PluginInterface {
   metadata = {
     id: 'example-plugin-simple',
     name: 'Example Plugin Simple',
-    version: '1.0.0',
-    min_app_version: '1.1.0',
+    version: '1.0.2',
+    min_app_version: '1.2.0',
     author: 'your-name',
     description: 'A minimal AnyMenu plugin template that prints Hello World.',
     icon: 'lucide-printer',
     css: cssText,
   };
 
-  onLoad(): void {
+  onLoad(app_: PluginAppCtx): void {
+    app = app_
     console.log('[ExamplePluginSimple] Plugin loaded');
   }
 
   onUnload(): void {
-    if (cache_ctx) cache_ctx.api.unregisterSubPanel('example-plugin-simple-panel')
+    app.api.unregisterSubPanel('example-plugin-simple-panel')
     console.log('[ExamplePluginSimple] Plugin unloaded');
   }
 
-  async run(ctx: PluginInterfaceCtx): Promise<void> {
+  async run(ctx: PluginRunCtx): Promise<void> {
     // 注册面板示例
-    if (!cache_ctx) {
-      cache_ctx = ctx
-      const newPanel = document.createElement('div'); newPanel.innerText = 'New Panel Content';
-      ctx.api.registerSubPanel({
+    if (!cache_el) {
+      cache_el = document.createElement('div'); cache_el.innerText = 'New Panel Content';
+      app.api.registerSubPanel({
           id: 'example-plugin-simple-panel',
-          el: newPanel
+          el: cache_el
       })
     }
 
@@ -53,16 +54,16 @@ export default class ExamplePluginSimple implements PluginInterface {
     const selected = ctx.env.selectedText;
     if (selected && selected.trim() !== '') {
       // 如果有选中文本，在其后追加问候
-      ctx.api.sendText(`${selected} — ExamplePluginSimply!`);
+      app.api.sendText(`${selected} — ExamplePluginSimply!`);
     } else {
       // 否则直接输出
-      // ctx.api.sendText('ExamplePluginSimply!');
+      // app.api.sendText('ExamplePluginSimply!');
 
       // 否则显示面板
-      ctx.api.hidePanel(['menu'])
-      ctx.api.showPanel(['example-plugin-simple-panel'])
+      app.api.hidePanel(['menu'])
+      app.api.showPanel(['example-plugin-simple-panel'])
     }
 
-    ctx.api.notify('ExamplePluginSimply plugin executed ✅');
+    app.api.notify('ExamplePluginSimply plugin executed ✅');
   }
 }
